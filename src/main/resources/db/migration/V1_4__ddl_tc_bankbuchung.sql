@@ -4,7 +4,7 @@
 
 CREATE TABLE tc_bankbuchung
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   auftragskonto text,
   buchungstag date,
   valutadatum date,

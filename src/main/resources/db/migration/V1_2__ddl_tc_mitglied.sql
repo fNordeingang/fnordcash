@@ -4,7 +4,7 @@
 
 CREATE TABLE tc_mitglied
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   nhid integer NOT NULL,
   gueltig_von date NOT NULL,
   gueltig_bis date NOT NULL,
