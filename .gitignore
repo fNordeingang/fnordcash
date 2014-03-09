@@ -1,2 +1,6 @@
 settings.xml
 target
+*.ids
+*.ipr
+*.iws
+*.iml
