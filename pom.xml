@@ -17,8 +17,6 @@
             <configuration>
                 <driver>org.postgresql.Driver</driver>
                 <url>jdbc:postgresql://localhost:5432/fnordcash</url>
-                <user>postgres</user>
-                <password></password>
                 <schemas>
                     <schema>public</schema>
                 </schemas>
