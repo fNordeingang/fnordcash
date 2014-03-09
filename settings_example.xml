@@ -4,8 +4,6 @@
             <!-- By default Flyway will look for the server with the id 'flyway-db' -->
             <!-- This can be customized by configuring the 'serverId' property -->
             <id>flyway-db</id>
-            <driver>org.postgresql.Driver</driver>
-            <url>jdbc:postgresql://localhost:5432/fnordcash</url>
             <user>postgres</user>
             <password></password>
         </server>
