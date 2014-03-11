@@ -16,9 +16,9 @@
             <version>2.3</version>
             <configuration>
                 <driver>org.postgresql.Driver</driver>
-                <url>jdbc:postgresql://localhost:5432/fnordcash</url>
+                <url>jdbc:postgresql://localhost:5432/default</url>
                 <schemas>
-                    <schema>public</schema>
+                    <schema>fnordcash</schema>
                 </schemas>
                 <table>schema_history</table>
                 <initVersion>1.0</initVersion>
