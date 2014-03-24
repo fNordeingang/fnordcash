@@ -19,6 +19,9 @@ class Command(BaseCommand):
         else:
             current_version = 0
 
+        if len(db_files) == current_version:
+            print("Nothing to do, database is up to date!")
+
         for db_file in db_files[current_version::]:
             current_version += 1
             print("Applying version {} using {}".format(current_version, db_file))
