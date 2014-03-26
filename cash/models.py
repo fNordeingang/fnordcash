@@ -46,6 +46,13 @@ class Bankbuchung(models.Model):
 
 class Buchung(models.Model):
     id = models.IntegerField(primary_key=True, editable=False, auto_created=True)
+    buchungsdatum = models.DateTimeField()
+    betrag = models.DecimalField(max_digits=999, decimal_places=2)
+    sollkonto = models.IntegerField()
+    habenkonto = models.IntegerField()
+    belegdatum = models.DateField()
+    belegtext = models.TextField()
+    beschreibung = models.TextField()
 
     class Meta:
         db_table = '"fnordcash"."tc_buchung"'
@@ -65,3 +72,14 @@ class Beitrag(models.Model):
         db_table = '"fnordcash"."tc_beitrag"'
         verbose_name = 'Beitrag'
         verbose_name_plural = 'Beiträge'
+
+
+class Konto(models.Model):
+    id = models.IntegerField(primary_key=True, editable=False, auto_created=True)
+    name = models.CharField(max_length=255)
+    parent = models.ForeignKey('self', blank=True, null=True)
+
+    class Meta:
+        db_table = '"fnordcash"."tc_konto"'
+        verbose_name = 'Konto'
+        verbose_name_plural = 'Konten'
