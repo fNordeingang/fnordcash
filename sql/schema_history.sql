@@ -23,7 +23,7 @@ WITH (
 
 -- Index: fnordcash.schema_history_ir_idx
 
--- DROP INDEX fnordcash.schema_history_ir_idx;
+DROP INDEX fnordcash.schema_history_ir_idx;
 
 CREATE INDEX schema_history_ir_idx
   ON fnordcash.schema_history
@@ -32,7 +32,7 @@ CREATE INDEX schema_history_ir_idx
 
 -- Index: fnordcash.schema_history_s_idx
 
--- DROP INDEX fnordcash.schema_history_s_idx;
+DROP INDEX fnordcash.schema_history_s_idx;
 
 CREATE INDEX schema_history_s_idx
   ON fnordcash.schema_history
@@ -41,7 +41,7 @@ CREATE INDEX schema_history_s_idx
 
 -- Index: fnordcash.schema_history_vr_idx
 
--- DROP INDEX fnordcash.schema_history_vr_idx;
+DROP INDEX fnordcash.schema_history_vr_idx;
 
 CREATE INDEX schema_history_vr_idx
   ON fnordcash.schema_history

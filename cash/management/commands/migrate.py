@@ -10,7 +10,7 @@ class Command(BaseCommand):
         db_files = listdir('migrations')
         cursor = connection.cursor()
         cursor.execute("SET SCHEMA 'fnordcash'")
-        cursor.execute(open('sql/schema_history.sql'))
+        cursor.execute(open('sql/schema_history.sql').read())
         cursor.execute("SELECT version FROM schema_history "
                        "WHERE installed_on = (SELECT MAX(installed_on) from fnordcash.schema_history) "
                        "AND success = TRUE LIMIT 1")
