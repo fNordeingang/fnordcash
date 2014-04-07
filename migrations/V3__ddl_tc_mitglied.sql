@@ -9,7 +9,6 @@ CREATE TABLE tc_mitglied
   gueltig_von date NOT NULL,
   gueltig_bis date NOT NULL,
   typkennung text,
-  mitgliednr text,
   anrede text,
   titel text,
   vorname text,

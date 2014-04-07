@@ -43,7 +43,7 @@
 )
 select
   nextval('SQ_MITGLIED_ID'),
-  nextval('SQ_MITGLIED_NHID'),
+  MITGLIEDNR::int,
   current_date,
   to_date('31.12.9999', 'DD.MM.YYYY'),
   TYPKENNUNG,
