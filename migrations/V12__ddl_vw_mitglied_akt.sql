@@ -7,8 +7,6 @@ CREATE OR REPLACE VIEW vw_mitglied_akt AS
     tc_mitglied.nhid,
     tc_mitglied.gueltig_von,
     tc_mitglied.gueltig_bis,
-    tc_mitglied.typkennung,
-    tc_mitglied.mitgliednr,
     tc_mitglied.anrede,
     tc_mitglied.titel,
     tc_mitglied.vorname,
@@ -38,12 +36,9 @@ CREATE OR REPLACE VIEW vw_mitglied_akt AS
     tc_mitglied.telefon2,
     tc_mitglied.skype_voip,
     tc_mitglied.inhaber,
-    tc_mitglied.ausgabemedium,
-    tc_mitglied.adressgruppe,
     tc_mitglied.beitrag_nhid
    FROM tc_mitglied
   WHERE 'now'::text::date >= tc_mitglied.gueltig_von AND 'now'::text::date <= tc_mitglied.gueltig_bis;
 
 ALTER TABLE vw_mitglied_akt
   OWNER TO fnordcash;
-

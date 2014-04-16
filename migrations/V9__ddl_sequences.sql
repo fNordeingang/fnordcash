@@ -76,3 +76,15 @@ CREATE SEQUENCE sq_mitglied_nhid
 ALTER TABLE sq_mitglied_nhid
   OWNER TO fnordcash;
 
+-- Sequence: sq_konto_id
+
+-- DROP SEQUENCE sq_konto_id;
+
+CREATE SEQUENCE sq_konto_id
+  INCREMENT 1
+  MINVALUE 2000
+  MAXVALUE 9223372036854775807
+  START 1303
+  CACHE 1;
+ALTER TABLE sq_konto_id
+  OWNER TO fnordcash;
