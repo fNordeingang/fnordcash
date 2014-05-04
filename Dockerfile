@@ -1,6 +1,4 @@
-# Mail-in-a-Box Dockerfile
-# see https://www.docker.io
-###########################
+
 
 # To build the image:
 # sudo docker.io build -t cash .
@@ -10,13 +8,14 @@
 
 # (the SSH port is only available locally, but other ports are exposed publicly and must be available
 # otherwise the container won't start)
-# sudo docker.io run -d -p 22 -p 80:8081 cash
+# sudo docker.io run -d -p 22 -p 80 cash
+
+
 
 FROM ubuntu:14.04
 MAINTAINER vileda (https://fnordeingang.de)
 
-RUN hostname cash.fnord.fnet
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y openssh-server python3 python3-pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y openssh-server python3 python3-pip python-pip
 RUN pip install django
 RUN pip install psycopg2
 
