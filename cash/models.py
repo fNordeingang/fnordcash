@@ -81,6 +81,9 @@ class Konto(models.Model):
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self', blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = '"fnordcash"."tc_konto"'
         verbose_name = 'Konto'
