@@ -19,7 +19,7 @@ class Mitglied(models.Model):
     mitgliednr = models.IntegerField()
 
     class Meta:
-        db_table = '"fnordcash"."tc_mitglied"'
+        db_table = '"fnordcash"."vw_mitglied_akt"'
         verbose_name = 'Mitglied'
         verbose_name_plural = 'Mitglieder'
 
@@ -69,7 +69,7 @@ class Beitrag(models.Model):
     gueltig_bis = models.DateField()
 
     class Meta:
-        db_table = '"fnordcash"."tc_beitrag"'
+        db_table = '"fnordcash"."vw_beitrag_akt"'
         verbose_name = 'Beitrag'
         verbose_name_plural = 'Beiträge'
 
