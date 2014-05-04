@@ -8,8 +8,6 @@ CREATE TABLE tc_mitglied
   nhid integer NOT NULL,
   gueltig_von date NOT NULL,
   gueltig_bis date NOT NULL,
-  typkennung text,
-  mitgliednr text,
   anrede text,
   titel text,
   vorname text,
@@ -39,11 +37,7 @@ CREATE TABLE tc_mitglied
   telefon2 text,
   skype_voip text,
   inhaber text,
-  ausgabemedium text,
-  adressgruppe text,
-  zahlungsbedingung text,
-  abrechnung_ueber text,
-  ausgabe_sprache text,
+  beitrag_nhid integer,
   CONSTRAINT pk_tc_mitglied PRIMARY KEY (id),
   CONSTRAINT uk_tc_mitglied UNIQUE (nhid, gueltig_von)
 )
@@ -52,4 +46,14 @@ WITH (
 );
 ALTER TABLE tc_mitglied
   OWNER TO fnordcash;
+
+-- Trigger: tr_mitglied_ins on tc_mitglied
+
+-- DROP TRIGGER tr_mitglied_ins ON tc_mitglied;
+
+CREATE TRIGGER tr_mitglied_ins
+  AFTER INSERT
+  ON tc_mitglied
+  FOR EACH ROW
+  EXECUTE PROCEDURE fn_tr_mitglied_ins();
 
