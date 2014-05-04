@@ -3,7 +3,7 @@
 ###########################
 
 # To build the image:
-# sudo docker.io build -t box .
+# sudo docker.io build -t cash .
 
 # Run your container the first time with an interactive console
 # sudo docker.io run -i -t cash
