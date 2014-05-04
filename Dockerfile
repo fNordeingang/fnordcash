@@ -15,7 +15,7 @@
 FROM ubuntu:14.04
 MAINTAINER vileda (https://fnordeingang.de)
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y openssh-server python3 python3-pip python-pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y openssh-server python3 python3-pip python-pip postgresql-client postgresql-common postgresql-contrib
 RUN pip install django
 RUN pip install psycopg2
 
