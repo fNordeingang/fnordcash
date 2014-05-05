@@ -16,9 +16,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y openssh-server python3
 RUN pip3 install django
 RUN pip3 install psycopg2
 
-RUN git clone https://github.com/fNordeingang/fnordcash.git /usr/local/fnordcash
+RUN git clone https://github.com/fNordeingang/fnordcash.git /fnordcash
 
 # How the instance is launched.
-ADD docker /usr/local/fnordcash/docker
-CMD bash /usr/local/fnordcash/docker/start.sh
+ENTRYPOINT ["/fnordcash/docker/init"]
+CMD [""]
 EXPOSE 22 80
