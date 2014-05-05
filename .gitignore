@@ -4,5 +4,4 @@ target
 *.ipr
 *.iws
 *.iml
-fnordcash/settings.py
 __pycache__
