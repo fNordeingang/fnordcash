@@ -33,7 +33,7 @@ class Mitglied(models.Model):
     ort = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     eintrittsdatum = models.DateField()
-    austrittsdatum = models.DateField()
+    austrittsdatum = models.DateField(blank=True, null=True)
     gueltig_von = models.DateField()
     gueltig_bis = models.DateField()
 
@@ -81,7 +81,7 @@ class Konto(models.Model):
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self', blank=True, null=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
