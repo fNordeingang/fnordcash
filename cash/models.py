@@ -2,13 +2,13 @@ from django.db import models
 import re
 
 
-MONEY_REGEX_PATTERN = re.compile('^\$?-?0*(?:\d+(?!,)(?:\.\d{1,2})?|(?:\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?))$')
+MONEY_REGEX_PATTERN = re.compile('^-?0*(?:\d+(?!\.)(?:,\d{1,2})?|(?:\d{1,3}(?:\.\d{3})*(?:,\d{1,2})?))€?$')
 
 
 def MoneyValidator(value):
     """Will validate a string value against a money regular expression"""
     if not MONEY_REGEX_PATTERN.match(value):
-        raise exceptions.ValidationError('{v} is not a valid dollar amount'.format(v=value))
+        raise exceptions.ValidationError('{v} is not a valid amount'.format(v=value))
 
 
 class MyMoneyField(models.CharField):
