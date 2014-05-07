@@ -9,4 +9,39 @@ DB_PASS=${DB_PASS:-}
 
 cd /fnordcash
 git pull
-python3 manage.py runserver 0.0.0.0:80
+
+appHelp () {
+  echo "Available options:"
+  echo " app:start          - Starts the gitlab server (default)"
+  echo " app:rake <task>    - Execute a rake task."
+  echo " app:help           - Displays the help"
+  echo " [command]          - Execute the specified linux command eg. bash."
+}
+
+case "$1" in
+  app:start)
+    python3 manage.py runserver 0.0.0.0:80
+    ;;
+  app:migrate)
+    python3 manage.py migrate
+    ;;
+  app:help)
+    appHelp
+    ;;
+  *)
+    if [ -x $1 ]; then
+      $1
+    else
+      prog=$(which $1)
+      if [ -n "${prog}" ] ; then
+        shift 1
+        $prog $@
+      else
+        appHelp
+      fi
+    fi
+    ;;
+esac
+
+exit 0
+
