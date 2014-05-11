@@ -14,6 +14,6 @@
 
 -- DROP SCHEMA fnordcash;
 
--- CREATE SCHEMA fnordcash
---  AUTHORIZATION fnordcash;
+CREATE SCHEMA fnordcash
+ AUTHORIZATION fnordcash;
 
