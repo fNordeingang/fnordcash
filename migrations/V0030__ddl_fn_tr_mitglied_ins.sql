@@ -1,4 +1,4 @@
-﻿-- Function: fn_tr_mitglied_ins()
+-- Function: fn_tr_mitglied_ins()
 
 -- DROP FUNCTION fn_tr_mitglied_ins();
 
