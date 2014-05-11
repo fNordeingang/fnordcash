@@ -20,5 +20,5 @@ RUN git clone https://github.com/fNordeingang/fnordcash.git /fnordcash
 
 # How the instance is launched.
 ENTRYPOINT ["/fnordcash/docker/init"]
-CMD [""]
+CMD ["app:start"]
 EXPOSE 22 80
