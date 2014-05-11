@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Migrate the Database'
 
     def handle(self, *args, **options):
-        db_files = listdir('migrations')
+        db_files = sorted(listdir('migrations'))
         cursor = connection.cursor()
         cursor.execute("SET SCHEMA 'fnordcash'")
         cursor.execute(open('sql/schema_history.sql').read())
