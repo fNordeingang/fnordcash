@@ -1,37 +1,5 @@
-﻿merge into
-  TC_BANKBUCHUNG T
-using
-(
-  select
-    AUFTRAGSKONTO,
-    to_date(BUCHUNGSTAG, 'DD.MM.YYYY') as BUCHUNGSTAG,
-    to_date(VALUTADATUM, 'DD.MM.YYYY') as VALUTADATUM,
-    BUCHUNGSTEXT,
-    VERWENDUNGSZWECK,
-    BEGUENSTIGTER,
-    KONTONUMMER,
-    BLZ,
-    BETRAG::money as BETRAG,
-    WAEHRUNG,
-    INFO
-  from
-    TS_BANKBUCHUNG
-) S
-on
-(
-  T.AUFTRAGSKONTO    = S.AUFTRAGSKONTO
-  T.BUCHUNGSTAG      = S.BUCHUNGSTAG
-  T.VALUTADATUM      = S.VALUTADATUM
-  T.BUCHUNGSTEXT     = S.BUCHUNGSTEXT
-  T.VERWENDUNGSZWECK = S.VERWENDUNGSZWECK
-  T.BEGUENSTIGTER    = S.BEGUENSTIGTER
-  T.KONTONUMMER      = S.KONTONUMMER
-  T.BLZ              = S.BLZ
-  T.BETRAG           = S.BETRAG
-  T.WAEHRUNG         = S.WAEHRUNG
-  T.INFO             = S.INFO
-)
-when not matched then insert
+﻿insert into
+  TC_BANKBUCHUNG
 (
   ID,
   AUFTRAGSKONTO,
@@ -46,18 +14,24 @@ when not matched then insert
   WAEHRUNG,
   INFO
 )
-values
-(
+select
   nextval('SQ_BANKBUCHUNG_ID'),
-  S.AUFTRAGSKONTO,
-  S.BUCHUNGSTAG,
-  S.VALUTADATUM,
-  S.BUCHUNGSTEXT,
-  S.VERWENDUNGSZWECK,
-  S.BEGUENSTIGTER,
-  S.KONTONUMMER,
-  S.BLZ,
-  S.BETRAG,
-  S.WAEHRUNG,
-  S.INFO
-);
+  AUFTRAGSKONTO,
+  case
+    when to_date(BUCHUNGSTAG || '.' || substr(VALUTADATUM, 7, 2), 'DD.MM.YY') >= to_date(VALUTADATUM, 'DD.MM.YY') then
+      to_date(BUCHUNGSTAG || '.' || substr(VALUTADATUM, 7, 2), 'DD.MM.YY')
+    else
+      to_date(BUCHUNGSTAG || '.' || to_char(to_number(substr(VALUTADATUM, 7, 2), '99') - 1, '99'), 'DD.MM.YY')
+  end,
+  to_date(VALUTADATUM, 'DD.MM.YY'),
+  BUCHUNGSTEXT,
+  VERWENDUNGSZWECK,
+  BEGUENSTIGTER,
+  KONTONUMMER,
+  BLZ,
+  BETRAG::money,
+  WAEHRUNG,
+  INFO
+from
+  TS_BANKBUCHUNG
+;
